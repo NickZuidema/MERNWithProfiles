@@ -8,9 +8,13 @@ const {JWT_SECRET} = require('../keys')
 const requireLogin = require('../middleware/requireLogin')
 
 
+/*
+//for testing purposes
 router.get('/protected',requireLogin,(req,res)=>{
     res.send("hi user!")
 })
+*/
+
 
 router.post('/signup',(req,res)=>{
     const {username,name,email,artist,password} = req.body
