@@ -19,6 +19,7 @@ const Profile = () => {
         </div>
         <div>
           <h4>John "The Bike" Ronalds</h4>
+          <h5>@iamthebike</h5>
           <h6>Are there bikes nearby?</h6>
           <br></br>
           <div /*style={{ display: "flex" }}*/>

@@ -6,6 +6,7 @@ import Home from "./components/screens/Home";
 import Signin from "./components/screens/Signin";
 import Profile from "./components/screens/Profile";
 import Signup from "./components/screens/Signup";
+import ListItem from "./components/screens/ListItem";
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         {/*Requires /src/screens/Login.js*/}
         <Route exact path="/profile" element={<Profile />} />
         {/*Requires /src/screens/Profile.js*/}
+        <Route exact path="/listitem" element={<ListItem />} />
+        {/*Requires /src/screens/ListItem.js*/}
       </Routes>
     </BrowserRouter>
   );

@@ -25,6 +25,11 @@ const NavBar = () => {
               Profile
             </Link>
           </li>
+          <li>
+            <Link to="/listitem" style={{ color: "black" }}>
+              List Item
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>
