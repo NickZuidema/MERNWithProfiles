@@ -4,6 +4,17 @@ const mongoose = require('mongoose')
 const requireLogin = require('../middleware/requireLogin')
 const itemModel = mongoose.model('Item');
 
+router.get('/allitems',(req,res)=>{
+    itemModel.find()
+    .populate("artist","_id username name")
+    .then(items=>{
+        res.json({items})
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+})
+
 router.post('/createitem',requireLogin,(req,res)=>{
     const {title,price} = req.body
     if(!title || !price){
@@ -24,5 +35,15 @@ router.post('/createitem',requireLogin,(req,res)=>{
     })
 })
 
+router.get('/myitems',requireLogin,(req,res)=>{
+    itemModel.find({artist:req.user._id})
+    .populate("artist","_id username name")
+    .then(myitems=>{
+        res.json({myitems})
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+})
 
 module.exports = router
