@@ -17,7 +17,7 @@ const NavBar = () => {
           </li>
           <li>
             <Link to="/signin" style={{ color: "black" }}>
-              Login
+              Sign in
             </Link>
           </li>
           <li>
