@@ -23,3 +23,13 @@ NavBarColor {
 .switch {
   margin-bottom: 10px;
 }
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.profile-item {
+  width: 30%;
+}
