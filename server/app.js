@@ -1,31 +1,29 @@
-const express = require('express')
-const app = express()
-const mongoose = require('mongoose')
-const PORT = 5000
-const {MONGOURI} = require('./keys')
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+const PORT = 5000;
+const { MONGOURI } = require("./keys");
 
+mongoose.connect(MONGOURI);
 
-mongoose.connect(MONGOURI)
+mongoose.connection.on("connected", () => {
+  console.log("connected to MongoDB!");
+});
 
-mongoose.connection.on('connected', ()=>{
-    console.log("connected to MongoDB!")
-})
+mongoose.connection.on("error", (err) => {
+  console.log("error connecting", err);
+});
 
-mongoose.connection.on('error', (err)=>{
-    console.log("error connecting", err)
-})
+require("./models/user");
+require("./models/item");
 
-require('./models/user')
-require('./models/item')
+app.use(express.json());
+app.use(require("./routes/auth"));
+app.use(require("./routes/item"));
 
-app.use(express.json())
-app.use(require('./routes/auth'))
-app.use(require('./routes/item'))
-
-app.listen(PORT, ()=>{
-    console.log("Server is running on", PORT)
-})
-
+app.listen(PORT, () => {
+  console.log("Server is running on", PORT);
+});
 
 /*
 //simple example of middleware
