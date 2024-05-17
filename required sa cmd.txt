@@ -5,3 +5,5 @@ npm install bcryptjs [required to encrypt passwords.]
 
 npx create-react-app client [to create the client folder in the MERNWithProfiles folder]
 npm install react-router-dom [something to do in the client folder]
+
+npm install materialize-css@next [for front end decorations]

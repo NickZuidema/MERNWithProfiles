@@ -12,7 +12,7 @@ const NavBar = () => {
         <ul id="nav-mobile" className="right">
           <li>
             <Link to="/signup" style={{ color: "black" }}>
-              Signup
+              Sign up
             </Link>
           </li>
           <li>
