@@ -35,6 +35,8 @@ const Signin = () => {
         if (data.error) {
           M.toast({ html: data.error, classes: "#c62828 red darken-3" }); //Toast for not filling in all the fields
         } else {
+          localStorage.setItem("jwt", JSON.stringify(data.token));
+          localStorage.setItem("user", JSON.stringify(data.user));
           M.toast({ html: "Signed in successfully!" });
           navigate("/");
         }

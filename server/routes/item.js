@@ -17,8 +17,8 @@ router.get("/allitems", (req, res) => {
 });
 
 router.post("/createitem", requireLogin, (req, res) => {
-  const { title, price } = req.body;
-  if (!title || !price) {
+  const { title, price, description, category, image } = req.body;
+  if (!title || !price || !category || !image) {
     return res.status(422).json({ error: "Please enter all required fields" });
   }
 
@@ -26,6 +26,9 @@ router.post("/createitem", requireLogin, (req, res) => {
   const item = new itemModel({
     title,
     price,
+    description,
+    category,
+    image,
     artist: req.user,
   });
   item

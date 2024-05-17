@@ -26,8 +26,8 @@ const NavBar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/listitem" style={{ color: "black" }}>
-              List Item
+            <Link to="/createitem" style={{ color: "black" }}>
+              Create Item
             </Link>
           </li>
         </ul>

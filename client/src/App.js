@@ -21,7 +21,7 @@ function App() {
         {/*Requires /src/screens/Login.js*/}
         <Route exact path="/profile" element={<Profile />} />
         {/*Requires /src/screens/Profile.js*/}
-        <Route exact path="/listitem" element={<ListItem />} />
+        <Route exact path="/createitem" element={<ListItem />} />
         {/*Requires /src/screens/ListItem.js*/}
       </Routes>
     </BrowserRouter>

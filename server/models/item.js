@@ -14,10 +14,14 @@ const itemSchema = new mongoose.Schema({
     type: String,
     default: "No description.",
   },
-  photo: {
-    //may be changed to primaryPhoto if commisions are implemented, as they could several photos.
+  category: {
     type: String,
-    default: "No photo.", //to be changed to required
+    required: true,
+  },
+  image: {
+    //may be changed to primaryPhoto if commisions are implemented, as they could use several photos.
+    type: String,
+    required: true, //Was not required
   },
   artist: {
     type: ObjectId,
