@@ -1,38 +1,47 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const Home = () => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch("/allitems", {
+      headers: {
+        "Authorization": "Bearer " + localStorage.getItem("jwt").replace(/["]+/g, ""), //prettier-ignore
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result && result.items) {
+          setData(result.items);
+        } else {
+          console.error("Data structure is incorrect", result);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data", error);
+      });
+  }, []);
+
+  //console.log(item);
+
   return (
     <div className="home">
-      <div className="card home-card">
-        <div className="card-image">
-          <img src="https://images.unsplash.com/photo-1578926375605-eaf7559b1458?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHBhaW50aW5nfGVufDB8fDB8fHww" />
-        </div>
-        <div className="card-content">
-          <h5>A Green Place</h5>
-          <h6>by</h6>
-          <h6>iamthebike</h6>
-        </div>
-      </div>
-      <div className="card home-card">
-        <div className="card-image">
-          <img src="https://images.unsplash.com/photo-1578926375605-eaf7559b1458?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHBhaW50aW5nfGVufDB8fDB8fHww" />
-        </div>
-        <div className="card-content">
-          <h5>A Green Place</h5>
-          <h6>by</h6>
-          <h6>iamthebike</h6>
-        </div>
-      </div>
-      <div className="card home-card">
-        <div className="card-image">
-          <img src="https://images.unsplash.com/photo-1578926375605-eaf7559b1458?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHBhaW50aW5nfGVufDB8fDB8fHww" />
-        </div>
-        <div className="card-content">
-          <h5>A Green Place</h5>
-          <h6>by</h6>
-          <h6>iamthebike</h6>
-        </div>
-      </div>
+      {/*console.log(data)*/}
+      {data.map((item) => {
+        return (
+          <div className="card home-card" key={item._id}>
+            <div className="card-image">
+              <img src={item.image} />
+            </div>
+            <div className="card-content">
+              <h5>
+                {item.title} ({item.category})
+              </h5>
+              <h5>₱{item.price}</h5>
+              <h6>by {item.artist.username}</h6>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };

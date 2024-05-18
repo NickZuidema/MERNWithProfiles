@@ -4,17 +4,20 @@ const mongoose = require("mongoose");
 const requireLogin = require("../middleware/requireLogin");
 const itemModel = mongoose.model("Item");
 
-router.get("/allitems", (req, res) => {
-  itemModel
-    .find()
-    .populate("artist", "_id username name")
-    .then((items) => {
-      res.json({ items });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+router.get(
+  "/allitems",
+  /*requireLogin,*/ (req, res) => {
+    itemModel
+      .find()
+      .populate("artist", "_id username name")
+      .then((items) => {
+        res.json({ items });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+);
 
 router.post("/createitem", requireLogin, (req, res) => {
   const { title, price, description, category, image } = req.body;
