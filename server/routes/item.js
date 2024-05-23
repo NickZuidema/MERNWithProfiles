@@ -56,4 +56,24 @@ router.get("/myitems", requireLogin, (req, res) => {
     });
 });
 
+// router.delete('deleteitem/":itemId', (req, res) => {
+//   Item.findOne({ _id: req.params.itemId })
+//     .populate("postedBy", "_id")
+//     .exec((err, post) => {
+//       if (err || !post) {
+//         return res.status(422).json({ error: err });
+//       }
+//       if (post.postedBy._id.toString() === req.user._id.toString()) {
+//         post
+//           .remove()
+//           .then((result) => {
+//             res.json(result);
+//           })
+//           .catch((err) => {
+//             console.log(err);
+//           });
+//       }
+//     });
+// });
+
 module.exports = router;

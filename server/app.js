@@ -7,7 +7,7 @@ const { MONGOURI } = require("./keys");
 mongoose.connect(MONGOURI);
 
 mongoose.connection.on("connected", () => {
-  console.log("connected to MongoDB!");
+  console.log("Connected to MongoDB!");
 });
 
 mongoose.connection.on("error", (err) => {

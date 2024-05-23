@@ -34,6 +34,10 @@ NavBarColor {
   width: 30%;
 }
 
+.profile-card {
+  width: 100%;
+}
+
 .home-card {
   max-width: 500px;
   height: max-content;
